@@ -4,17 +4,17 @@ class ProductsController < ApplicationController
     # GET /products
     def index
         if params[:available] == 'true'
-            @products = Product.where.not(inventory_count: 0)
+            @products = current_user.products.where.not(inventory_count: 0)
             json_response(@products)
         else 
-            @products = Product.all
+            @products = current_user.products.all
             json_response(@products)
         end
     end
 
     # POST /products
     def create
-        @product = Product.create!(product_params)
+        @product = current_user.products.create!(product_params)
         json_response(@product, :created)
     end
 
@@ -48,11 +48,10 @@ class ProductsController < ApplicationController
 
     def product_params
         # whitelist params
-        params.permit(:name, :price, :inventory_count, :id, :created_by)
+        params.permit(:name, :price, :inventory_count, :id)
     end
 
     def set_product
-        @product = Product.find(params[:id])
+        @product = current_user.products.find(params[:id])
     end
-
 end
