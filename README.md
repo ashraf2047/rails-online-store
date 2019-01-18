@@ -1,4 +1,4 @@
-# MOCK ONLINE STORE BUILT WITH RAILS 5
+# Mock online store built with Rails 5
 
 A server-side web API used to fetch products from an inventory.
 
@@ -21,7 +21,6 @@ A server-side web API used to fetch products from an inventory.
 # Dependencies
 
 # Running Tests
-
 
 # Sample Deployment 
 
