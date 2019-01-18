@@ -36,7 +36,7 @@ git clone https://github.com/ashraf2047/rails-online-store.git && cd rails-onlin
 
 ## Dependencies
 
-These Dependencies are included in the Gemfile so there is no need to download externally, just run 
+These dependencies are included in the Gemfile so there is no need to download externally, just run 
 
 ```
 bundle install
@@ -58,7 +58,7 @@ To run the Rspec's automated test suite :
 bundle exec rspec
 ```
 
-## Sanple Deployment
+## Sample Deployment
 
 
 
