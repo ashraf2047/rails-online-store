@@ -58,7 +58,7 @@ To run the Rspec's automated test suite :
 bundle exec rspec
 ```
 
-## Usage
+## Sanple Deployment
 
 
 
