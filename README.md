@@ -10,10 +10,10 @@ The API exposes the following RESTful endpoints.
 | --- | --- | --- | --- | 
 | POST /signup | Signup | N/A| name=value email=value password=value password_confirmation=value
 | POST /auth/login | Login | N/A | email=value password=value
-| GET /products | 1) List all products 2) List products available for purchase| Authorization:web_token| 1) N/A 2) available=true
+| GET /products | **A** List all products or **B** List products available for purchase| Authorization:web_token| **A** N/A **B** available=true
 | GET /products/id | Get a product with a specific id | Authorization:web_token | N/A |
 | POST /products | Create a product | Authorization:web_token | name=value price=value inventory_count=value id=value
-| PUT /products/id | 1) Update a products name 2) Purchase a product | Authorization:web_token | 1) name=value 2) purchase=true
+| PUT /products/id | **A** Update a products name or **B** Purchase a product | Authorization:web_token | **A** name=value **B** purchase=true
 | DELETE /products/id | Delete a product | Authorization:web_token | N/A
 
 ## Getting Started
