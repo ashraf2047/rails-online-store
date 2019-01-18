@@ -1,24 +1,30 @@
-# README
+# MOCK ONLINE STORE BUILT WITH RAILS 5
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A server-side web API used to fetch products from an inventory.
 
-Things you may want to cover:
+## API Endpoints
 
-* Ruby version
+| Endpoint | Functionality | Required Fields | Query Parameters
+| --- | --- |
+| POST /signup | Signup | 
+| POST /auth/login | Login |
+| GET /products | List all products in the inventory |
+| GET /products/id | Get a product with a specific id | 
+| POST /products | Create a product |
+| PUT /products/id | Update a product | 
+| DELETE /products/id | Delete a product |
 
-* System dependencies
+## Getting Started
 
-* Configuration
+# Prerequisites
 
-* Database creation
+# Dependencies
 
-* Database initialization
+# Running Tests
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# Sample Deployment 
 
-* Deployment instructions
 
-* ...
+
+
