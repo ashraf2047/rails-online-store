@@ -5,7 +5,7 @@ A server-side web API used to fetch products from an inventory.
 ## API Endpoints
 
 | Endpoint | Functionality | Required Fields | Query Parameters
-| --- | --- |
+| --- | --- | --- | --- |
 | POST /signup | Signup | 
 | POST /auth/login | Login |
 | GET /products | List all products in the inventory |
