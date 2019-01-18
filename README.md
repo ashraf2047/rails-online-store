@@ -16,15 +16,50 @@ The API exposes the following RESTful endpoints.
 | PUT /products/id | **A)** Update a products name or **B)** Purchase a product | Authorization:web_token | **A)** name=value **B)** purchase=true
 | DELETE /products/id | Delete a product | Authorization:web_token | N/A
 
-## Getting Started
+# Getting Started
 
-# Prerequisites
+These instructions will get you a copy of the project up and running on your local machine for development and testing.
 
-# Dependencies
+## Prerequisites
+Make sure you have ruby version >=2.2.2 and rails version 5
 
-# Running Tests
+```
+$ ruby -v # ruby 2.3.7p456 (2018-03-28 revision 63024) [universal.x86_64-darwin17]
+$ rails -v # Rails 5.2.2
+```
 
-# Sample Deployment 
+## Clone the repository
+
+```
+git clone https://github.com/ashraf2047/rails-online-store.git && cd 
+```
+
+## Dependencies
+
+### These Dependencies are included in the Gemfile so there is no need to download externally, just run 
+
+```
+bundle install
+
+```
+
+rspec-rails - Testing framework.
+factory_bot_rails - A fixtures replacement with a more straightforward syntax.
+shoulda_matchers - Provides RSpec with additional matchers.
+database_cleaner - Cleans the test database to ensure a clean state in each test suite.
+faker - A library for generating fake data
+bcrypt- Used for password hashing 
+jwt - Token-based authentication
+
+## Running Tests
+
+To run the Rspec's automated test suite :
+
+```
+bundle exec rspec
+```
+
+## Usage
 
 
 
