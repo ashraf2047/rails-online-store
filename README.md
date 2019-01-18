@@ -31,7 +31,7 @@ $ rails -v # Rails 5.2.2
 ## Clone the repository
 
 ```
-git clone https://github.com/ashraf2047/rails-online-store.git && cd 
+git clone https://github.com/ashraf2047/rails-online-store.git && cd rails-online-store
 ```
 
 ## Dependencies
