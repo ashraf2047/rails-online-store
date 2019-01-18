@@ -40,7 +40,6 @@ These Dependencies are included in the Gemfile so there is no need to download e
 
 ```
 bundle install
-
 ```
 
 * [rspec-rails](https://github.com/rspec/rspec-rails) - Testing framework.
