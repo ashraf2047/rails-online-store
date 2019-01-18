@@ -1,14 +1,16 @@
 require 'rails_helper'
-RSpec.describe 'Todos API', type: :request do
+RSpec.describe 'Products API', type: :request do
     # initialize test data 
-    let!(:products) { create_list(:product, 10) }
+    let(:user) { create(:user) }
+    let!(:products) { create_list(:product, 10, created_by: user.id) }
     let(:id) {products.first.id }
-
+    # authorize request
+    let(:headers) { valid_headers }
 
     # Test suite for GET /products
     describe 'GET /products' do
         # make HTTP get request before each example
-        before { get '/products' }
+        before { get '/products', params: {}, headers: headers }
 
         it 'returns products' do
         # Note `json` is a custom helper to parse JSON responses
@@ -23,7 +25,7 @@ RSpec.describe 'Todos API', type: :request do
 
     # Test suite for GET /products/:id
     describe 'GET /products/:id' do
-        before { get "/products/#{id}" }
+        before { get "/products/#{id}", params: {}, headers: headers }
 
         context 'when the record exists' do
             it 'returns the product' do
@@ -52,10 +54,12 @@ RSpec.describe 'Todos API', type: :request do
     # Test suite for POST /products
     describe 'POST /products' do
         # valid payload
-        let(:valid_attributes) { { name: 'Nike Air Forces', price: 80 , inventory_count: 5, id:34, created_by: '1' } }
+        let(:valid_attributes) do
+            { name: 'Nike Air Forces', price: 80 , inventory_count: 5, id:34, created_by: '1' }.to_json
+        end
 
         context 'when the request is valid' do
-            before { post '/products', params: valid_attributes }
+            before { post '/products', params: valid_attributes, headers: headers }
 
             it 'creates a product' do
                 expect(json['name']).to eq('Nike Air Forces')
@@ -70,25 +74,26 @@ RSpec.describe 'Todos API', type: :request do
         end
 
         context 'when the request is invalid' do
-            before { post '/products', params: { name: 'Foobar', price: 1, id: 4, inventory_count:5 } }
+            let(:invalid_atrributes) {{created_by: nil}.to_json}
+            before { post '/products', params: invalid_atrributes, headers: headers }
 
             it 'returns status code 422' do
                 expect(response).to have_http_status(422)
             end
 
             it 'returns a validation failure message' do
-                expect(response.body)
-                .to match(/Validation failed: Created by can't be blank/)
+                expect(json['message'])
+                .to match(/Validation failed: Name can't be blank, Price can't be blank, Inventory count can't be blank, Id can't be blank/)
             end
         end
     end
 
     # Test suite for PUT /products/:id
     describe 'PUT /product/:id' do
-        let(:valid_attributes) { { name: "Apple Watch" } }
+        let(:valid_attributes) { { name: "Apple Watch" }.to_json }
 
         context 'when the record exists' do
-            before { put "/products/#{id}", params: valid_attributes }
+            before { put "/products/#{id}", params: valid_attributes, headers: headers }
 
             it 'updates the record' do
                 expect(response.body).to be_empty
@@ -102,10 +107,10 @@ RSpec.describe 'Todos API', type: :request do
 
     # Test suite for DELETE /products/:id
     describe 'DELETE /products/:id' do
-        before { delete "/products/#{id}" }
+        before { delete "/products/#{id}", params: {}, headers: headers }
 
         it 'returns status code 204' do
           expect(response).to have_http_status(204)
         end
-      end
+    end
 end
