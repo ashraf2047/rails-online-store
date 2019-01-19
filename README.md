@@ -223,7 +223,7 @@ $ http GET 0.0.0.0:3000/products available='true' \
 ]
 ```
 
-### Get a product
+### Get a product by its id
 
 ```
 $ http GET 0.0.0.0:3000/products/1 \
@@ -240,7 +240,7 @@ $ http GET 0.0.0.0:3000/products/1 \
 }
 ```
 
-### Purchase a product - reduces the inventory_count by 1
+### Purchase a product - this reduces the inventory_count field by 1
 
 ```
 $ http PUT 0.0.0.0:3000/products/1 purchase='true' \
