@@ -52,7 +52,7 @@ bundle install
 
 ## Running Tests
 
-To run the Rspec's automated test suite :
+To run the automated test suite :
 
 ```
 bundle exec rspec
