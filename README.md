@@ -62,9 +62,94 @@ bundle exec rspec
 
 This example makes http requests to the API using [httpie](https://httpie.org/)
 
+Start the server
 ```
-#Start the server
-rails s 
+$ rails s 
+=> Booting Puma
+=> Rails 5.2.2 application starting in development
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.12.0 (ruby 2.3.7-p456), codename: Llamas in Pajamas
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
+```
+Sign up a user - returns the web token used for authentication
+
+```
+$ http 0.0.0.0:3000/signup name=Joe email=Joe@email.com password=foobar password_confirmation=foobar
+HTTP/1.1 201 Created
+Cache-Control: max-age=0, private, must-revalidate
+Content-Type: application/json; charset=utf-8
+ETag: W/"87205a601ea04cf781efc9d0990ed5a8"
+Transfer-Encoding: chunked
+X-Request-Id: 9ee41b83-8c99-4513-9095-c3472e42a6fb
+X-Runtime: 0.267219
+
+{
+    "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDc5MzN9.-VLGzXlWTGj8S8x3Yz5Lvag2M8JU91LELwml8uDIJBc",
+    "message": "Account created successfully"
+}
+```
+
+Add some products to the inventory
+
+```
+$ http POST 0.0.0.0:3000/products name='Nike Air Force'  price='100' inventory_count='5' id=1 \
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
+{
+    "created_at": "2019-01-19T01:52:23.751Z",
+    "created_by": "1",
+    "id": 1,
+    "inventory_count": 5,
+    "name": "Nike Air Force",
+    "price": 100,
+    "updated_at": "2019-01-19T01:52:23.751Z"
+}
+
+$ http POST 0.0.0.0:3000/products name='Gucci Shoes'  price='300' inventory_count='0' id=2 \
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L
+9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
+{
+    "created_at": "2019-01-19T01:55:12.932Z",
+    "created_by": "1",
+    "id": 2,
+    "inventory_count": 0,
+    "name": "Gucci Shoes",
+    "price": 300,
+    "updated_at": "2019-01-19T01:55:12.932Z"
+}
+
+$ http POST 0.0.0.0:3000/products name='Jansport Backpack'  price='40' inventory_count='3' id=3 \
+Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L
+9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
+{
+    "created_at": "2019-01-19T01:55:53.203Z",
+    "created_by": "1",
+    "id": 3,
+    "inventory_count": 3,
+    "name": "Jansport Backpack",
+    "price": 40,
+    "updated_at": "2019-01-19T01:55:53.203Z"
+}
+
+$ http POST 0.0.0.0:3000/products name='Apple Air Pods'  price='200' inventory_count='0' id=4 \
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L
+9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
+{
+    "created_at": "2019-01-19T01:58:36.089Z",
+    "created_by": "1",
+    "id": 4,
+    "inventory_count": 0,
+    "name": "Apple Air Pods",
+    "price": 200,
+    "updated_at": "2019-01-19T01:58:36.089Z"
+}
 ```
 
 
