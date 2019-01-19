@@ -282,7 +282,7 @@ $ http DELETE 0.0.0.0:3000/products/4 \
 > Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
 
 ```
-# Thought Process / Inspiration
+## Thought Process / Inspiration
 
  * This API was designed to be simple and easy to follow, yet robust and heavily tested. 
  * It uses the ubiquitious RESTful protocal and exposes clearly defined endpoints.
