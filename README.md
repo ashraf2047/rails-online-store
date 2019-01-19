@@ -1,6 +1,6 @@
 # Mock online store built with Rails 5
 
-A server-side web API used to fetch products from an inventory.
+A server-side web API used to create, update, fetch, purchase and delete products from a store.
 
 ## API Endpoints
 
