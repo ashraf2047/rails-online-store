@@ -282,7 +282,13 @@ $ http DELETE 0.0.0.0:3000/products/4 \
 > Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
 
 ```
+# Thought Process / Inspiration
 
+ * This API was designed to be simple and easy to follow, yet robust and heavily tested. 
+ * It uses the ubiquitious RESTful protocal and exposes clearly defined endpoints.
+ * It implements token-based user authentication to introduce an aspect of security and information hiding.
+ * The Rspec test framework validates the API routes, exception handling and controller/resource management.
+ * Some improvements would be to include API versioning and paganation features.
 
 
 
