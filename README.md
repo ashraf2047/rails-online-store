@@ -21,7 +21,7 @@ The API exposes the following RESTful endpoints.
 These instructions will get you a copy of the project up and running on your local machine for development and testing.
 
 ## Prerequisites
-Make sure you have ruby version >=2.2.2 and rails version 5
+Make sure you have ruby version >=2.2.2 and rails version >= 5.0.0
 
 ```
 $ ruby -v # ruby 2.3.7p456 (2018-03-28 revision 63024) [universal.x86_64-darwin17]
