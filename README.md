@@ -58,7 +58,7 @@ To run the Rspec's automated test suite :
 bundle exec rspec
 ```
 
-## Sample Deployment
+# Sample Deployment
 
 This example makes http requests to the API using [httpie](https://httpie.org/)
 
