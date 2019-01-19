@@ -62,7 +62,7 @@ bundle exec rspec
 
 ## This example makes http requests to the API using [httpie](https://httpie.org/)
 
-### Start the server
+### First things first, lets start up the rails server
 ```
 $ rails s 
 => Booting Puma
@@ -75,7 +75,7 @@ Puma starting in single mode...
 * Listening on tcp://0.0.0.0:3000
 Use Ctrl-C to stop
 ```
-### Sign up a user - returns the web token used for authentication
+### Then sign up a user - this returns the web token used for authentication
 
 ```
 $ http 0.0.0.0:3000/signup name=Joe email=Joe@email.com password=foobar password_confirmation=foobar
@@ -93,7 +93,7 @@ X-Runtime: 0.267219
 }
 ```
 
-### Add some products to the store
+### Now add some products to the store
 
 ```
 $ http POST 0.0.0.0:3000/products name='Nike Air Force'  price='100' inventory_count='5' id=1 \
@@ -149,7 +149,7 @@ $ http POST 0.0.0.0:3000/products name='Apple Air Pods'  price='200' inventory_c
 }
 ```
 
-### Get all products in the store
+### Lets view all products in the store
 
 ```
 $ http  0.0.0.0:3000/products  \
@@ -195,7 +195,7 @@ $ http  0.0.0.0:3000/products  \
 ]
 ```
 
-### Get all products with available inventory 
+### Lets view all the products with available inventory 
 
 ```
 $ http GET 0.0.0.0:3000/products available='true' \
@@ -265,7 +265,7 @@ Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1
 
 ```
 
-### Purchase a product with no inventory 
+### Attempting to purchase a product with no inventory 
 
 ```
 $ http PUT 0.0.0.0:3000/products/4 purchase='true' \
