@@ -60,6 +60,13 @@ bundle exec rspec
 
 ## Sample Deployment
 
+This example makes http requests to the API using [httpie](https://httpie.org/)
+
+```
+#Start the server
+rails s 
+```
+
 
 
 
