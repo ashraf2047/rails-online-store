@@ -60,9 +60,9 @@ bundle exec rspec
 
 # Sample Deployment
 
-This example makes http requests to the API using [httpie](https://httpie.org/)
+## This example makes http requests to the API using [httpie](https://httpie.org/)
 
-Start the server
+### Start the server
 ```
 $ rails s 
 => Booting Puma
@@ -75,7 +75,7 @@ Puma starting in single mode...
 * Listening on tcp://0.0.0.0:3000
 Use Ctrl-C to stop
 ```
-Sign up a user - returns the web token used for authentication
+### Sign up a user - returns the web token used for authentication
 
 ```
 $ http 0.0.0.0:3000/signup name=Joe email=Joe@email.com password=foobar password_confirmation=foobar
@@ -93,7 +93,7 @@ X-Runtime: 0.267219
 }
 ```
 
-Add some products to the inventory
+### Add some products to the store
 
 ```
 $ http POST 0.0.0.0:3000/products name='Nike Air Force'  price='100' inventory_count='5' id=1 \
@@ -110,8 +110,7 @@ $ http POST 0.0.0.0:3000/products name='Nike Air Force'  price='100' inventory_c
 }
 
 $ http POST 0.0.0.0:3000/products name='Gucci Shoes'  price='300' inventory_count='0' id=2 \
-> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L
-9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
 
 {
     "created_at": "2019-01-19T01:55:12.932Z",
@@ -124,8 +123,7 @@ $ http POST 0.0.0.0:3000/products name='Gucci Shoes'  price='300' inventory_coun
 }
 
 $ http POST 0.0.0.0:3000/products name='Jansport Backpack'  price='40' inventory_count='3' id=3 \
-Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L
-9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
 
 {
     "created_at": "2019-01-19T01:55:53.203Z",
@@ -138,8 +136,7 @@ Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1
 }
 
 $ http POST 0.0.0.0:3000/products name='Apple Air Pods'  price='200' inventory_count='0' id=4 \
-> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L
-9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
 
 {
     "created_at": "2019-01-19T01:58:36.089Z",
@@ -150,6 +147,139 @@ $ http POST 0.0.0.0:3000/products name='Apple Air Pods'  price='200' inventory_c
     "price": 200,
     "updated_at": "2019-01-19T01:58:36.089Z"
 }
+```
+
+### Get all products in the store
+
+```
+$ http  0.0.0.0:3000/products  \
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
+[
+    {
+        "created_at": "2019-01-19T01:52:23.751Z",
+        "created_by": "1",
+        "id": 1,
+        "inventory_count": 5,
+        "name": "Nike Air Force",
+        "price": 100,
+        "updated_at": "2019-01-19T01:52:23.751Z"
+    },
+    {
+        "created_at": "2019-01-19T01:55:12.932Z",
+        "created_by": "1",
+        "id": 2,
+        "inventory_count": 0,
+        "name": "Gucci Shoes",
+        "price": 300,
+        "updated_at": "2019-01-19T01:55:12.932Z"
+    },
+    {
+        "created_at": "2019-01-19T01:55:53.203Z",
+        "created_by": "1",
+        "id": 3,
+        "inventory_count": 3,
+        "name": "Jansport Backpack",
+        "price": 40,
+        "updated_at": "2019-01-19T01:55:53.203Z"
+    },
+    {
+        "created_at": "2019-01-19T01:58:36.089Z",
+        "created_by": "1",
+        "id": 4,
+        "inventory_count": 0,
+        "name": "Apple Air Pods",
+        "price": 200,
+        "updated_at": "2019-01-19T01:58:36.089Z"
+    }
+]
+```
+
+### Get all products with available inventory 
+
+```
+$ http GET 0.0.0.0:3000/products available='true' \
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
+[
+    {
+        "created_at": "2019-01-19T01:52:23.751Z",
+        "created_by": "1",
+        "id": 1,
+        "inventory_count": 5,
+        "name": "Nike Air Force",
+        "price": 100,
+        "updated_at": "2019-01-19T01:52:23.751Z"
+    },
+    {
+        "created_at": "2019-01-19T01:55:53.203Z",
+        "created_by": "1",
+        "id": 3,
+        "inventory_count": 3,
+        "name": "Jansport Backpack",
+        "price": 40,
+        "updated_at": "2019-01-19T01:55:53.203Z"
+    }
+]
+```
+
+### Get a product
+
+```
+$ http GET 0.0.0.0:3000/products/1 \
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
+{
+    "created_at": "2019-01-19T01:52:23.751Z",
+    "created_by": "1",
+    "id": 1,
+    "inventory_count": 5,
+    "name": "Nike Air Force",
+    "price": 100,
+    "updated_at": "2019-01-19T01:52:23.751Z"
+}
+```
+
+### Purchase a product - reduces the inventory_count by 1
+
+```
+$ http PUT 0.0.0.0:3000/products/1 purchase='true' \
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+Item Purchased
+
+# Getting the product again shows a decreased inventory_count 
+
+$ http GET 0.0.0.0:3000/products/1 \
+Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
+{
+    "created_at": "2019-01-19T01:52:23.751Z",
+    "created_by": "1",
+    "id": 1,
+    "inventory_count": 4,
+    "name": "Nike Air Force",
+    "price": 100,
+    "updated_at": "2019-01-19T01:52:23.751Z"
+}
+
+```
+
+### Purchase a product with no inventory 
+
+```
+$ http PUT 0.0.0.0:3000/products/4 purchase='true' \
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
+Cannot purchase item, inventory count is 0
+
+```
+
+### Delete a product
+
+```
+$ http DELETE 0.0.0.0:3000/products/4 \
+>Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
 ```
 
 
