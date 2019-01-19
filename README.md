@@ -245,6 +245,7 @@ $ http GET 0.0.0.0:3000/products/1 \
 ```
 $ http PUT 0.0.0.0:3000/products/1 purchase='true' \
 > Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+
 Item Purchased
 
 # Getting the product again shows a decreased inventory_count 
@@ -278,7 +279,7 @@ Cannot purchase item, inventory count is 0
 
 ```
 $ http DELETE 0.0.0.0:3000/products/4 \
->Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
+> Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDc5NDg3MjJ9.ZHc1RaFiuu2-4L9BN8kpqdjOY-lXRWUGfRHy6g_gkSk
 
 ```
 
