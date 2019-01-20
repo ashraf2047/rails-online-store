@@ -1,4 +1,4 @@
-# Mock online store built with Rails 
+# Mock online store built with Ruby on Rails
 
 A server-side web API used to create, update, fetch, purchase and delete products from a store.
 
