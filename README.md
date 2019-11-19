@@ -20,20 +20,6 @@ The API exposes the following RESTful endpoints.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing.
 
-## Prerequisites
-Make sure you have ruby version >=2.2.2 and rails version >= 5.0.0
-
-```
-$ ruby -v # ruby 2.3.7p456 (2018-03-28 revision 63024) [universal.x86_64-darwin17]
-$ rails -v # Rails 5.2.2
-```
-
-## Clone the repository
-
-```
-git clone https://github.com/ashraf2047/rails-online-store.git && cd rails-online-store
-```
-
 ## Dependencies
 
 These dependencies are included in the Gemfile so there is no need to download externally, just run 
