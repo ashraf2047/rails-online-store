@@ -31,7 +31,6 @@ bundle install
 * [rspec-rails](https://github.com/rspec/rspec-rails) - Testing framework.
 * [factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails) - A fixtures replacement with a more straightforward syntax.
 * [shoulda_matchers](https://github.com/thoughtbot/shoulda-matchers) - Provides RSpec with additional matchers.
-* [database_cleaner](https://github.com/DatabaseCleaner/database_cleaner) - Cleans the test database to ensure a clean state in each test suite.
 * [faker](https://github.com/stympy/faker) - A library for generating fake data
 * [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) - Used for password hashing 
 * [jwt](https://jwt.io/) - Token-based authentication
